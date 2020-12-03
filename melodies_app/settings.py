@@ -31,7 +31,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('123456')
 DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost',
-                 '127.0.0.1', 'https://melodies-backend.herokuapp.com']
+                 '127.0.0.1', 'melodies-backend.herokuapp.com']
 
 
 # Application definition
