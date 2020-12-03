@@ -10,6 +10,7 @@ class Genere(models.Model):
     id = models.UUIDField(primary_key=True, editable=False)
     genere = models.CharField(
         max_length=250, null=True, blank=True)
+    image = models.URLField(max_length=255, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super(Genere, self).save(*args, **kwargs)
@@ -21,6 +22,7 @@ class Genere(models.Model):
 class Artist(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     artist = models.CharField(max_length=250, blank=True, null=True)
+    image = models.URLField(max_length=255, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super(Artist, self).save(*args, **kwargs)
