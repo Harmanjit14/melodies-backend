@@ -25,7 +25,8 @@ SECRET_KEY = 'e8swyhzw70j4p71gdj-c#rg36-3=0t8k@w82zj!%med-t!w+s-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost',
+                 '127.0.0.1', 'nameofapp.herokuapp.com']
 
 
 # Application definition
@@ -40,7 +41,12 @@ INSTALLED_APPS = [
     'users',
     'songsData',
     'userFlagData',
+    "graphene_django",
 ]
+
+# GRAPHENE = {
+#     "SCHEMA": "django_root.schema.schema"
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
