@@ -11,6 +11,7 @@ class Genere(models.Model):
     genere = models.CharField(
         max_length=250, null=True, blank=True)
     image = models.URLField(max_length=255, null=True, blank=True)
+    value = models.IntegerField(blank=True,null=True)
 
     def save(self, *args, **kwargs):
         super(Genere, self).save(*args, **kwargs)
@@ -38,6 +39,7 @@ class Song(models.Model):
     artist = models.ForeignKey(Artist, on_delete=CASCADE)
     image = models.URLField(blank=True, null=True, max_length=255)
     link = models.URLField(blank=True, null=True, max_length=255)
+    value = models.IntegerField(blank=True,null=True)
 
     def save(self, *args, **kwargs):
         super(Song, self).save(*args, **kwargs)
