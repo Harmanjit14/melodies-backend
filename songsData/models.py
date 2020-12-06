@@ -7,7 +7,7 @@ from django.db.models.deletion import CASCADE
 
 
 class Genere(models.Model):
-    id = models.UUIDField(primary_key=True, editable=False)
+    id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     genere = models.CharField(
         max_length=250, null=True, blank=True)
     image = models.URLField(max_length=255, null=True, blank=True)
