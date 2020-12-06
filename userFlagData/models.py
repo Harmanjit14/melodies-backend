@@ -1,7 +1,7 @@
 from uuid import uuid4
 from django.conf import settings
 from django.db import models
-from songsData.models import Song, Genere
+from songsData.models import Artist, Song, Genere
 # Create your models here.
 
 
@@ -19,4 +19,28 @@ class UserGenereFlags(models.Model):
         return self.user.email
 
 
-class 
+class UserArtistFlag(models.Model):
+    id = models.UUIDField(default=uuid4, primary_key=True, editable=False)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+    value = models.IntegerField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        super(UserArtistFlag, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.user.email
+
+
+class UserLikedList(models.Model):
+    id = models.UUIDField(default=uuid4, editable=False, primary_key=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
+    song = models.ForeignKey(Song, on_delete=models.CASCADE)
+
+    def save(self, *args, **kwargs):
+        super(UserLikedList, self).save(*args, **kwargs)
+
+    def __str__(self):
+        return self.user.email
