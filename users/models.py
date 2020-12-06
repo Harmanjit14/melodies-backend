@@ -12,7 +12,7 @@ class UserManager(BaseUserManager):
         if not email:
             raise ValueError("No Email Found")
         user = self.model(email=self.normalize_email(email))
-        user = self.model(name=name)
+        user.name = name
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -28,7 +28,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     email = models.EmailField(max_length=250, unique=True)
-    name = models.CharField(max_length=250, blank=True, null=True)
+    name = models.CharField(max_length=250, null=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 

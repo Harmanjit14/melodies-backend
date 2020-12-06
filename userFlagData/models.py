@@ -10,7 +10,7 @@ class UserGenereFlags(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     genere = models.ForeignKey(Genere, on_delete=models.CASCADE)
-    value = models.IntegerField(blank=True, null=True)
+    value = models.IntegerField(null=True, default=0)
 
     def save(self, *args, **kwargs):
         super(UserGenereFlags, self).save(*args, **kwargs)
@@ -24,7 +24,7 @@ class UserArtistFlag(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
-    value = models.IntegerField(blank=True, null=True)
+    value = models.IntegerField(null=True, default=0)
 
     def save(self, *args, **kwargs):
         super(UserArtistFlag, self).save(*args, **kwargs)
