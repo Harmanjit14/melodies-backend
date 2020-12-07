@@ -5,7 +5,7 @@ import userFlagData.schema
 import graphql_jwt
 
 
-class Query(users.schema.Query, songsData.schema.Query, graphene.ObjectType):
+class Query(users.schema.Query, songsData.schema.Query, userFlagData.schema.Query, graphene.ObjectType):
     pass
 
 
