@@ -23,6 +23,7 @@ class AllGenre(DjangoObjectType):
 class Query(graphene.ObjectType):
     artists = graphene.List(AllArtist)
     songs = graphene.List(AllSongs)
+    genre = graphene.List(AllGenre)
 
     def resolve_artists(self, info):
         active = info.context.user
@@ -35,3 +36,9 @@ class Query(graphene.ObjectType):
         if active.is_anonymous:
             raise GraphQLError("Not Logged In")
         return Song.objects.all().order_by("-title")
+
+    def resolve_genre(self,info):
+        active = info.context.user
+        if active.is_anonymous:
+            raise GraphQLError("Not Logged In")
+        return Genere.objects.all()
