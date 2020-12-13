@@ -24,6 +24,9 @@ class Query(graphene.ObjectType):
     artists = graphene.List(AllArtist)
     songs = graphene.List(AllSongs)
     genre = graphene.List(AllGenre)
+    topartists = graphene.List(AllArtist)
+    topsongs = graphene.List(AllSongs)
+    topgenre = graphene.List(AllGenre)
 
     def resolve_artists(self, info):
         active = info.context.user
@@ -41,4 +44,22 @@ class Query(graphene.ObjectType):
         active = info.context.user
         if active.is_anonymous:
             raise GraphQLError("Not Logged In")
-        return Genere.objects.all()
+        return Genere.objects.all().order_by("-value")
+
+    def resolve_topartists(self, info):
+        active = info.context.user
+        if active.is_anonymous:
+            raise GraphQLError("Not Logged In")
+        return Artist.objects.all().order_by("-value")
+
+    def resolve_topsongs(self, info):
+        active = info.context.user
+        if active.is_anonymous:
+            raise GraphQLError("Not Logged In")
+        return Song.objects.all().order_by("-value")
+
+    def resolve_topgenre(self,info):
+        active = info.context.user
+        if active.is_anonymous:
+            raise GraphQLError("Not Logged In")
+        return Genere.objects.all().order_by("-value")

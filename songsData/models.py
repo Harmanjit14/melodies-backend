@@ -24,6 +24,7 @@ class Artist(models.Model):
     id = models.UUIDField(primary_key=True, editable=False, default=uuid4)
     artist = models.CharField(max_length=250, blank=True, null=True)
     image = models.URLField(max_length=255, null=True, blank=True)
+    value = models.IntegerField(null=True, default=0)
 
     def save(self, *args, **kwargs):
         super(Artist, self).save(*args, **kwargs)
