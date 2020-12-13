@@ -45,3 +45,21 @@ class Query(graphene.ObjectType):
         if active.is_anonymous:
             raise GraphQLError("Not Logged In")
         return Genere.objects.all().order_by("-value")
+
+    def resolve_topartists(self, info):
+        active = info.context.user
+        if active.is_anonymous:
+            raise GraphQLError("Not Logged In")
+        return Artist.objects.all().order_by("-value")
+
+    def resolve_topsongs(self, info):
+        active = info.context.user
+        if active.is_anonymous:
+            raise GraphQLError("Not Logged In")
+        return Song.objects.all().order_by("-value")
+
+    def resolve_topgenre(self,info):
+        active = info.context.user
+        if active.is_anonymous:
+            raise GraphQLError("Not Logged In")
+        return Genere.objects.all().order_by("-value")
